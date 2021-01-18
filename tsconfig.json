@@ -11,6 +11,9 @@
     "paths": {
       "@entities/*": [
         "./src/entities/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
       ]
     },
     "esModuleInterop": true,
