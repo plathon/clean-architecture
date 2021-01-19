@@ -14,6 +14,9 @@
       ],
       "@shared/*": [
         "./src/shared/*"
+      ],
+      "@useCases/*": [
+        "./src/useCases/*"
       ]
     },
     "esModuleInterop": true,
