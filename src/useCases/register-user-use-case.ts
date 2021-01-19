@@ -6,7 +6,7 @@ import { UserData } from '@entities/user/user-data'
 import { Either, left, right } from '@shared/either'
 import { UserRepository } from './ports/user-repository'
 
-export class RegisterUser {
+export class RegisterUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
   async execute(
