@@ -14,11 +14,11 @@ export class User {
   ): Either<InvalidNameError | InvalidEmailError, User> {
     const { name, email } = userData
 
-    if (UserValidator.validateName(name)) {
+    if (!UserValidator.validateName(name)) {
       return left(new InvalidNameError(name))
     }
 
-    if (UserValidator.validateEmail(email)) {
+    if (!UserValidator.validateEmail(email)) {
       return left(new InvalidEmailError(email))
     }
 
