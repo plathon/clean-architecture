@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { InvalidEmailError } from '@entities/user/errors/InvalidEmailError'
-import { InvalidNameError } from '@entities/user/errors/InvalidNameError'
+import { InvalidEmailError } from '@entities/user/errors/invalid-email-error'
+import { InvalidNameError } from '@entities/user/errors/invalid-name-error'
 import { User } from '@entities/user/user'
 import { UserData } from '@entities/user/user-data'
 import { Either, left, right } from '@shared/either'
