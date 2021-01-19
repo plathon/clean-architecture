@@ -1,4 +1,4 @@
-import { UserError } from './UserError'
+import { UserError } from './user-error'
 
 export class InvalidNameError extends Error implements UserError {
   constructor(name: string) {
