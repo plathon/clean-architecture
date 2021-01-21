@@ -1,16 +1,17 @@
 import { RegisterUserUseCase } from '@useCases/register-user-use-case'
+import { Controller } from '../controller'
 import { MissingParamError } from '../errors/missing-param-error'
 import { badRequest, ok } from '../helpers/http-helper'
 import { HttpRequest, HttpResponse } from '../ports/http'
 import { RegisterUserRequest as Request } from './register-user-request'
 import { RegisterUserResponse as Response } from './register-user-response'
 
-export class RegisterUserController {
+export class RegisterUserController implements Controller<Request, Response> {
   constructor(private readonly registerUserUseCase: RegisterUserUseCase) {}
 
-  async execute(
+  execute = async (
     httpRequest: HttpRequest<Request>
-  ): Promise<HttpResponse<Response>> {
+  ): Promise<HttpResponse<Response>> => {
     if (!httpRequest.body?.name || !httpRequest.body.email) {
       const field = !httpRequest.body?.name ? 'name' : 'email'
       return badRequest(new MissingParamError(field))
