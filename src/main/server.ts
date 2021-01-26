@@ -1,4 +1,4 @@
-import './env'
+import '@shared/env'
 import express from 'express'
 import routes from './routes'
 import { middlewares } from './middlewares'
