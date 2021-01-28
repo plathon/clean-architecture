@@ -13,12 +13,10 @@ jest.mock('@useCases/register-user-use-case', () => {
 
 const userRepository = new PostgresUserRepository()
 const registerUserUseCase = new RegisterUserUseCase(userRepository)
+const registerUserController = new RegisterUserController(registerUserUseCase)
 
 describe('register user controller', () => {
   test('should return status code 400 when name is not provided ', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const params: HttpRequest<any> = {
       body: { email: 'john@mail.com' }
     }
@@ -29,9 +27,6 @@ describe('register user controller', () => {
   })
 
   test('should return status code 400 when email is not provided', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const params: HttpRequest<any> = {
       body: { name: 'john lennon' }
     }
@@ -42,9 +37,6 @@ describe('register user controller', () => {
   })
 
   test('should call registerUserUseCase.execute method with user data', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const userData = { name: 'john lennon', email: 'john@mail.com' }
     const params: HttpRequest<any> = {
       body: userData
@@ -55,9 +47,6 @@ describe('register user controller', () => {
   })
 
   test('should return a badRequest when registerUserUseCase return error', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const userData = { name: 'john lennon', email: 'john@mail.com' }
     const params: HttpRequest<any> = {
       body: userData
@@ -75,9 +64,6 @@ describe('register user controller', () => {
   })
 
   test('should return status code 500 when registerUserUseCase throws an error', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const userData = { name: 'john lennon', email: 'john@mail.com' }
     const params: HttpRequest<any> = {
       body: userData
@@ -88,9 +74,6 @@ describe('register user controller', () => {
   })
 
   test('should return status code 200 when email and name are correctly provided', async () => {
-    const registerUserController = new RegisterUserController(
-      registerUserUseCase
-    )
     const userData = { name: 'john lennon', email: 'john@mail.com' }
     const params: HttpRequest<any> = {
       body: userData
