@@ -12,11 +12,17 @@
       "@entities/*": [
         "./src/entities/*"
       ],
+      "@adapters/*": [
+        "./src/adapters/*"
+      ],
       "@shared/*": [
         "./src/shared/*"
       ],
       "@useCases/*": [
         "./src/useCases/*"
+      ],
+      "@external/*": [
+        "./src/external/*"
       ]
     },
     "esModuleInterop": true,

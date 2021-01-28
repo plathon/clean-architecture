@@ -1,4 +1,5 @@
 import { HttpResponse } from '../ports/http'
+import { HttpErrorMessage } from './http-error-message'
 
 export enum StatusCode {
   badRequest = 400,
@@ -6,9 +7,9 @@ export enum StatusCode {
   internalServerError = 500
 }
 
-export const badRequest = (error: Error): HttpResponse<Error> => ({
+export const badRequest = (error: Error): HttpResponse<HttpErrorMessage> => ({
   statusCode: StatusCode.badRequest,
-  body: error
+  body: { message: error.message }
 })
 
 export const ok = <T>(data: T): HttpResponse<T> => ({
@@ -17,8 +18,8 @@ export const ok = <T>(data: T): HttpResponse<T> => ({
 })
 
 export const internalServerError = (
-  description: string
-): HttpResponse<string> => ({
+  description = 'Could not process your request. Please try again later.'
+): HttpResponse<HttpErrorMessage> => ({
   statusCode: StatusCode.internalServerError,
-  body: description
+  body: { message: description }
 })

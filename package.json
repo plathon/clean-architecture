@@ -9,7 +9,7 @@
     "migrate": "ts-node-dev -r tsconfig-paths/register --transpile-only ./src/external/cli/migrate",
     "start:dev": "NODE_ENV=development tsnd -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/main/server.ts",
     "lint": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "express": "^4.17.1",
